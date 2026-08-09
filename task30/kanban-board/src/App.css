@@ -1,0 +1,131 @@
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f7fb;
+  color: #1e293b;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+div > h1 {
+  text-align: center;
+  padding: 30px 20px 10px;
+  margin: 0;
+  font-size: 34px;
+  font-weight: 700;
+  color: #172554;
+}
+
+.board {
+  display: flex;
+  gap: 24px;
+  padding: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+  align-items: flex-start;
+}
+
+.column {
+  background: #e9eef7;
+  border-radius: 16px;
+  width: 33.33%;
+  min-height: 430px;
+  padding: 18px;
+  box-shadow: 0 5px 18px rgba(15, 23, 42, 0.08);
+}
+
+.column h2 {
+  margin: 0 0 18px;
+  font-size: 19px;
+  font-weight: 700;
+  color: #334155;
+}
+
+.task {
+  background: white;
+  border-radius: 13px;
+  padding: 17px;
+  margin-bottom: 14px;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+  border: 1px solid #e2e8f0;
+  transition: 0.2s ease;
+}
+
+.task:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.12);
+}
+
+.task strong {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 12px;
+  color: #1e293b;
+}
+
+.task input[type="file"] {
+  width: 100%;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.task button {
+  width: 100%;
+  border: none;
+  border-radius: 9px;
+  padding: 10px 14px;
+  background: #2563eb;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.task button:hover {
+  background: #1d4ed8;
+}
+
+.column:nth-child(1) {
+  border-top: 5px solid #3b82f6;
+}
+
+.column:nth-child(2) {
+  border-top: 5px solid #f59e0b;
+}
+
+.column:nth-child(3) {
+  border-top: 5px solid #22c55e;
+}
+
+@media (max-width: 900px) {
+  .board {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .column {
+    width: 100%;
+  }
+
+  div > h1 {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 500px) {
+  .board {
+    padding: 12px;
+  }
+
+  .column {
+    min-height: 300px;
+  }
+}

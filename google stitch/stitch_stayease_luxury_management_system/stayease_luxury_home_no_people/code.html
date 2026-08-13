@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>StayEase - Luxury Hotel Booking</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "inverse-on-surface": "#ebf1ff",
+                "on-tertiary-container": "#91918d",
+                "secondary": "#775a19",
+                "primary": "#041627",
+                "on-primary-fixed-variant": "#38485a",
+                "surface-variant": "#dce2f3",
+                "on-error": "#ffffff",
+                "on-tertiary": "#ffffff",
+                "surface": "#f9f9ff",
+                "error-container": "#ffdad6",
+                "on-surface-variant": "#44474c",
+                "tertiary-container": "#292a27",
+                "on-background": "#151c27",
+                "surface-container": "#e7eefe",
+                "on-primary": "#ffffff",
+                "background": "#f9f9ff",
+                "primary-fixed-dim": "#b7c8de",
+                "secondary-container": "#fed488",
+                "on-secondary-fixed": "#261900",
+                "surface-container-low": "#f0f3ff",
+                "tertiary-fixed": "#e4e2dd",
+                "surface-container-highest": "#dce2f3",
+                "surface-container-high": "#e2e8f8",
+                "surface-dim": "#d3daea",
+                "secondary-fixed": "#ffdea5",
+                "surface-tint": "#4f6073",
+                "outline": "#74777d",
+                "primary-container": "#1a2b3c",
+                "on-error-container": "#93000a",
+                "tertiary": "#151613",
+                "secondary-fixed-dim": "#e9c176",
+                "on-secondary": "#ffffff",
+                "inverse-primary": "#b7c8de",
+                "on-tertiary-fixed": "#1b1c19",
+                "primary-fixed": "#d2e4fb",
+                "outline-variant": "#c4c6cd",
+                "error": "#ba1a1a",
+                "on-primary-fixed": "#0b1d2d",
+                "inverse-surface": "#2a313d",
+                "on-secondary-container": "#785a1a",
+                "surface-container-lowest": "#ffffff",
+                "tertiary-fixed-dim": "#c8c6c2",
+                "on-primary-container": "#8192a7",
+                "on-surface": "#151c27",
+                "surface-bright": "#f9f9ff",
+                "on-secondary-fixed-variant": "#5d4201",
+                "on-tertiary-fixed-variant": "#474744"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "container-max": "1440px",
+                "margin-desktop": "64px",
+                "gutter": "24px",
+                "margin-mobile": "20px",
+                "unit": "8px"
+        },
+        "fontFamily": {
+                "body-md": [
+                        "Inter"
+                ],
+                "headline-xl": [
+                        "Playfair Display"
+                ],
+                "headline-lg": [
+                        "Playfair Display"
+                ],
+                "body-lg": [
+                        "Inter"
+                ],
+                "label-bold": [
+                        "Inter"
+                ],
+                "headline-md": [
+                        "Playfair Display"
+                ],
+                "button": [
+                        "Inter"
+                ],
+                "body-sm": [
+                        "Inter"
+                ],
+                "headline-lg-mobile": [
+                        "Playfair Display"
+                ]
+        },
+        "fontSize": {
+                "body-md": [
+                        "16px",
+                        {
+                                "lineHeight": "1.5",
+                                "fontWeight": "400"
+                        }
+                ],
+                "headline-xl": [
+                        "60px",
+                        {
+                                "lineHeight": "1.1",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "headline-lg": [
+                        "40px",
+                        {
+                                "lineHeight": "1.2",
+                                "fontWeight": "600"
+                        }
+                ],
+                "body-lg": [
+                        "18px",
+                        {
+                                "lineHeight": "1.6",
+                                "fontWeight": "400"
+                        }
+                ],
+                "label-bold": [
+                        "12px",
+                        {
+                                "lineHeight": "1.0",
+                                "letterSpacing": "0.05em",
+                                "fontWeight": "600"
+                        }
+                ],
+                "headline-md": [
+                        "24px",
+                        {
+                                "lineHeight": "1.3",
+                                "fontWeight": "600"
+                        }
+                ],
+                "button": [
+                        "14px",
+                        {
+                                "lineHeight": "1.0",
+                                "letterSpacing": "0.02em",
+                                "fontWeight": "500"
+                        }
+                ],
+                "body-sm": [
+                        "14px",
+                        {
+                                "lineHeight": "1.5",
+                                "fontWeight": "400"
+                        }
+                ],
+                "headline-lg-mobile": [
+                        "32px",
+                        {
+                                "lineHeight": "1.2",
+                                "fontWeight": "600"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+<style>
+        body { background-color: #F9F7F2; } /* Refined background */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(197, 160, 89, 0.2);
+            box-shadow: 0px 12px 40px rgba(197, 160, 89, 0.1);
+        }
+        .luxury-shadow {
+            box-shadow: 0px 8px 24px rgba(26, 43, 60, 0.08);
+        }
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface antialiased bg-background">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-desktop h-20 max-w-container-max mx-auto bg-surface/90 backdrop-blur-md dark:bg-primary shadow-sm dark:shadow-none transition-all duration-300 border-b border-[#C5A059]/10" id="main-nav">
+<div class="text-headline-md font-headline-md font-bold text-primary dark:text-on-primary tracking-wide">
+            StayEase
+        </div>
+<div class="hidden md:flex space-x-12">
+<a class="text-secondary border-b-2 border-secondary pb-1 font-label-bold text-label-bold tracking-[0.1em] uppercase hover:text-secondary transition-colors duration-200" href="#">Hotels</a>
+<a class="text-on-surface dark:text-on-primary font-label-bold text-label-bold tracking-[0.1em] uppercase hover:text-secondary transition-colors duration-200" href="#">Reviews</a>
+<a class="text-on-surface dark:text-on-primary font-label-bold text-label-bold tracking-[0.1em] uppercase hover:text-secondary transition-colors duration-200" href="#">About Us</a>
+</div>
+<div class="hidden md:flex space-x-6 items-center">
+<button class="font-label-bold text-label-bold text-on-surface hover:text-secondary transition-colors duration-200 px-4 py-2 uppercase tracking-widest">Login</button>
+<button class="bg-[#C5A059] text-white px-8 py-3 font-button text-button uppercase tracking-widest rounded-sm hover:bg-secondary transition-all duration-300 luxury-shadow">List Your Hotel</button>
+</div>
+</nav>
+<!-- Hero Section -->
+<header class="relative w-full h-[90vh] mt-20 flex items-center justify-center">
+<div class="absolute inset-0 z-0">
+<div class="parallax w-full h-full" data-alt="Ultra-luxury hotel infinity pool at sunset overlooking a calm ocean, modern architecture with clean lines, warm golden hour lighting, no people, cinematic composition, architectural photography, 8k resolution, serene and premium atmosphere." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB0Nd_2wSxSwNmj34yCWi6oU_8JKmsw20VqnrbGkBzYV0g-1cQObz6nIF5ReivYX8cdHTvvm8iCHpik-grAhfOl_lG11D6WG3fqHfGg0XqNXhWwzKSKu5Lmwyap8x17ce5TGK7WJtZyn-rlceDZi12_-73mEnAZ5omAGvBkSHb-3wT_nFXuCgfDQVbaMuEqQ3HM7X91GGj-Q9gxMZ9tKOR1Dz-P9pvHsMAmCVcbE-JAG_mha_ao7fI')"></div>
+<div class="absolute inset-0 bg-gradient-to-b from-primary/40 via-transparent to-primary/60"></div>
+</div>
+<div class="relative z-10 w-full max-w-container-max px-margin-mobile md:px-margin-desktop flex flex-col items-center text-center">
+<h1 class="font-headline-xl text-headline-xl text-on-primary mb-12 shadow-sm drop-shadow-2xl tracking-tight">Find Your Perfect Stay</h1>
+<!-- Search Module -->
+<div class="glass-panel w-full max-w-5xl rounded-xl p-3 md:p-5 flex flex-col md:flex-row gap-3 md:gap-5 items-center">
+<div class="flex-1 w-full flex items-center bg-white/90 backdrop-blur-sm rounded-lg px-5 py-4 luxury-shadow border border-[#C5A059]/10">
+<span class="material-symbols-outlined text-[#C5A059] mr-4 text-2xl" data-icon="location_on">location_on</span>
+<input class="w-full bg-transparent border-none focus:ring-0 font-body-lg text-on-surface placeholder-outline-variant p-0 tracking-wide" placeholder="Where are you going?" type="text"/>
+</div>
+<div class="flex-1 w-full flex items-center bg-white/90 backdrop-blur-sm rounded-lg px-5 py-4 luxury-shadow border border-[#C5A059]/10">
+<span class="material-symbols-outlined text-[#C5A059] mr-4 text-2xl" data-icon="calendar_today">calendar_today</span>
+<input class="w-full bg-transparent border-none focus:ring-0 font-body-lg text-on-surface placeholder-outline-variant p-0 tracking-wide" placeholder="Check-in - Check-out" type="text"/>
+</div>
+<div class="flex-1 w-full flex items-center bg-white/90 backdrop-blur-sm rounded-lg px-5 py-4 luxury-shadow border border-[#C5A059]/10">
+<span class="material-symbols-outlined text-[#C5A059] mr-4 text-2xl" data-icon="person">person</span>
+<input class="w-full bg-transparent border-none focus:ring-0 font-body-lg text-on-surface placeholder-outline-variant p-0 tracking-wide" placeholder="2 Guests, 1 Room" type="text"/>
+</div>
+<button class="w-full md:w-auto bg-[#C5A059] text-white px-10 py-5 font-button text-button uppercase tracking-widest rounded-lg hover:bg-secondary transition-all duration-300 luxury-shadow">
+                    Search
+                </button>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-24 space-y-36">
+<!-- Featured Hotels (Bento/Asymmetric) -->
+<section>
+<div class="flex justify-between items-end mb-16 border-b border-[#C5A059]/20 pb-6">
+<div>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-3 tracking-tight">Curated Escapes</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant tracking-wide font-light">Handpicked luxury for the discerning traveler.</p>
+</div>
+<a class="hidden md:flex items-center font-label-bold text-label-bold uppercase tracking-widest text-[#C5A059] hover:text-secondary transition-colors group" href="#">
+                    View All <span class="material-symbols-outlined ml-2 group-hover:translate-x-2 transition-transform duration-300" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+<!-- Large Feature Card -->
+<div class="md:col-span-8 bg-surface-container-lowest rounded-2xl overflow-hidden luxury-shadow group cursor-pointer relative h-[600px]">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-1000 group-hover:scale-110" data-alt="Modern luxury hotel lobby with high ceilings, marble floors, elegant lighting fixtures, and a view of a lush garden through floor-to-ceiling windows. No people. Minimalist and sophisticated interior design. Professional architectural photography." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAOXlu586hlX4_rPb1sXLNL8TVsIgecI8-L9l2eXdzkjW_NDEn40xqS5p2sfqJS_RmXYxxIjdJMWog6DtEPDULwx_KxGsXS-DkoYYPPY0K5jJEBgK9Knr71PSQpPbhZ3Za1uoOL8X4ttdVcHQY4MEs9xlNScsUGzPsUNWCp2YIxk8gHKYynk4zbLSqFyZWqXZCDOE9omYTnSqj3PuMPs_BVG_HSzkjhcS56lDN6syFRGnHc7Zfdenk')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/30 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500"></div>
+<div class="absolute bottom-0 left-0 p-10 w-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+<div class="flex justify-between items-end">
+<div>
+<span class="bg-[#C5A059] text-white font-label-bold text-label-bold uppercase tracking-widest px-4 py-2 rounded-sm mb-6 inline-block shadow-md">Featured</span>
+<h3 class="font-headline-lg text-headline-lg text-on-primary mb-3 tracking-tight">The Azure Tower, Dubai</h3>
+<p class="font-body-lg text-body-lg text-on-primary/90 font-light tracking-wide">Skyline Penthouse</p>
+</div>
+<div class="text-right">
+<p class="font-label-bold text-label-bold text-on-primary/80 mb-2 uppercase tracking-widest">From</p>
+<p class="font-headline-md text-headline-md text-[#C5A059] text-3xl">$1,200 <span class="font-body-md text-body-md text-on-primary/70 font-light tracking-normal">/night</span></p>
+</div>
+</div>
+</div>
+</div>
+<!-- Smaller Stacked Cards -->
+<div class="md:col-span-4 flex flex-col gap-8">
+<div class="flex-1 bg-surface-container-lowest rounded-2xl overflow-hidden luxury-shadow group cursor-pointer relative">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-1000 group-hover:scale-110 absolute inset-0" data-alt="Modern luxury hotel lobby with high ceilings, marble floors, elegant lighting fixtures, and a view of a lush garden through floor-to-ceiling windows. No people. Minimalist and sophisticated interior design. Professional architectural photography." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAOXlu586hlX4_rPb1sXLNL8TVsIgecI8-L9l2eXdzkjW_NDEn40xqS5p2sfqJS_RmXYxxIjdJMWog6DtEPDULwx_KxGsXS-DkoYYPPY0K5jJEBgK9Knr71PSQpPbhZ3Za1uoOL8X4ttdVcHQY4MEs9xlNScsUGzPsUNWCp2YIxk8gHKYynk4zbLSqFyZWqXZCDOE9omYTnSqj3PuMPs_BVG_HSzkjhcS56lDN6syFRGnHc7Zfdenk')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500"></div>
+<div class="absolute bottom-0 left-0 p-8 w-full z-10 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+<h3 class="font-headline-md text-headline-md text-on-primary mb-2 text-2xl tracking-tight">Ubud Sanctuary</h3>
+<p class="font-body-md text-body-md text-on-primary/80 mb-4 font-light tracking-wide">Bali, Indonesia</p>
+<p class="font-label-bold text-label-bold text-[#C5A059] text-lg">$450 <span class="text-sm text-on-primary/60 font-normal">/night</span></p>
+</div>
+</div>
+<div class="flex-1 bg-surface-container-lowest rounded-2xl overflow-hidden luxury-shadow group cursor-pointer relative">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-1000 group-hover:scale-110 absolute inset-0" data-alt="Modern luxury hotel lobby with high ceilings, marble floors, elegant lighting fixtures, and a view of a lush garden through floor-to-ceiling windows. No people. Minimalist and sophisticated interior design. Professional architectural photography." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAOXlu586hlX4_rPb1sXLNL8TVsIgecI8-L9l2eXdzkjW_NDEn40xqS5p2sfqJS_RmXYxxIjdJMWog6DtEPDULwx_KxGsXS-DkoYYPPY0K5jJEBgK9Knr71PSQpPbhZ3Za1uoOL8X4ttdVcHQY4MEs9xlNScsUGzPsUNWCp2YIxk8gHKYynk4zbLSqFyZWqXZCDOE9omYTnSqj3PuMPs_BVG_HSzkjhcS56lDN6syFRGnHc7Zfdenk')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500"></div>
+<div class="absolute bottom-0 left-0 p-8 w-full z-10 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+<h3 class="font-headline-md text-headline-md text-on-primary mb-2 text-2xl tracking-tight">Le Petit Palais</h3>
+<p class="font-body-md text-body-md text-on-primary/80 mb-4 font-light tracking-wide">Paris, France</p>
+<p class="font-label-bold text-label-bold text-[#C5A059] text-lg">$680 <span class="text-sm text-on-primary/60 font-normal">/night</span></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-16 px-margin-desktop flex flex-col items-center gap-10 bg-primary dark:bg-tertiary-container mt-24 text-on-primary dark:text-on-tertiary-container border-t border-[#C5A059]/20">
+<div class="text-headline-md font-headline-md text-[#C5A059] tracking-widest uppercase">
+            StayEase
+        </div>
+<div class="flex flex-wrap justify-center gap-10 font-body-sm text-body-sm tracking-widest uppercase">
+<a class="text-on-primary/70 hover:text-[#C5A059] transition-colors duration-300" href="#">Privacy Policy</a>
+<a class="text-on-primary/70 hover:text-[#C5A059] transition-colors duration-300" href="#">Terms of Service</a>
+<a class="text-on-primary/70 hover:text-[#C5A059] transition-colors duration-300" href="#">Contact Support</a>
+<a class="text-on-primary/70 hover:text-[#C5A059] transition-colors duration-300" href="#">Partner Hub</a>
+</div>
+<div class="font-label-bold text-label-bold text-on-primary/40 mt-8 tracking-widest">
+            © 2024 StayEase Luxury Hotels. All rights reserved.
+        </div>
+</footer>
+<script>
+        // Simple nav scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('main-nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-md', 'bg-surface/95', 'backdrop-blur-md');
+                nav.classList.remove('bg-surface/90');
+            } else {
+                nav.classList.remove('shadow-md', 'bg-surface/95', 'backdrop-blur-md');
+                nav.classList.add('bg-surface/90');
+            }
+        });
+    </script>
+</body></html>

@@ -1,0 +1,453 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>StayEase - Dashboard Overview</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#c8c6c2",
+                        "error-container": "#ffdad6",
+                        "secondary": "#775a19",
+                        "surface-bright": "#f9f9ff",
+                        "on-secondary-fixed-variant": "#5d4201",
+                        "surface-container": "#e7eefe",
+                        "primary": "#041627",
+                        "secondary-fixed-dim": "#e9c176",
+                        "secondary-container": "#fed488",
+                        "outline": "#74777d",
+                        "on-error-container": "#93000a",
+                        "tertiary-container": "#292a27",
+                        "surface-container-highest": "#dce2f3",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed": "#1b1c19",
+                        "primary-container": "#1a2b3c",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed": "#261900",
+                        "on-background": "#151c27",
+                        "surface-container-low": "#f0f3ff",
+                        "surface-tint": "#4f6073",
+                        "inverse-primary": "#b7c8de",
+                        "tertiary-fixed": "#e4e2dd",
+                        "primary-fixed-dim": "#b7c8de",
+                        "surface": "#f9f9ff",
+                        "surface-variant": "#dce2f3",
+                        "on-surface-variant": "#44474c",
+                        "primary-fixed": "#d2e4fb",
+                        "on-error": "#ffffff",
+                        "background": "#f9f9ff",
+                        "tertiary": "#151613",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-container": "#785a1a",
+                        "on-tertiary-fixed-variant": "#474744",
+                        "on-surface": "#151c27",
+                        "on-primary-fixed": "#0b1d2d",
+                        "surface-container-high": "#e2e8f8",
+                        "surface-dim": "#d3daea",
+                        "secondary-fixed": "#ffdea5",
+                        "error": "#ba1a1a",
+                        "outline-variant": "#c4c6cd",
+                        "on-primary-container": "#8192a7",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-container": "#91918d",
+                        "inverse-surface": "#2a313d",
+                        "on-primary-fixed-variant": "#38485a",
+                        "inverse-on-surface": "#ebf1ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "container-max": "1440px",
+                        "unit": "8px",
+                        "margin-mobile": "20px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "headline-xl": ["Playfair Display"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "label-bold": ["Inter"],
+                        "button": ["Inter"],
+                        "headline-md": ["Playfair Display"],
+                        "body-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "headline-xl": ["60px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "label-bold": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "button": ["14px", { "lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "headline-lg": ["40px", { "lineHeight": "1.2", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<!-- Google Fonts & Material Symbols -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom soft shadows for luxury feel */
+        .luxury-shadow-1 { box-shadow: 0px 4px 20px rgba(26, 43, 60, 0.05); }
+        .luxury-shadow-2 { box-shadow: 0px 12px 40px rgba(26, 43, 60, 0.12); }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md h-screen overflow-hidden flex">
+<!-- SideNavBar (Shared Component) -->
+<nav class="fixed left-0 top-0 h-screen w-64 flex flex-col p-6 z-40 bg-primary dark:bg-primary-container text-on-primary dark:text-on-primary-container shadow-xl">
+<!-- Header -->
+<div class="mb-10">
+<a href="{{DATA:SCREEN:SCREEN_9}}" class="block"><h1 class="font-headline-md text-headline-md text-secondary-fixed">StayEase</h1></a>
+<p class="font-label-bold text-label-bold text-on-primary/70 mt-2">Premium Management</p>
+</div>
+<!-- Main Navigation Tabs -->
+<ul class="flex flex-col gap-2 flex-grow">
+<!-- Active Tab: Overview -->
+<li class="">
+<a class="flex items-center gap-4 px-4 py-3 bg-secondary-container text-on-secondary-container rounded-lg font-bold translate-x-1 transition-transform font-label-bold text-label-bold" href="{{DATA:SCREEN:SCREEN_9}}">
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+                    Overview
+                </a>
+</li>
+<li class="">
+<a class="flex items-center gap-4 px-4 py-3 text-on-primary/70 hover:text-on-primary hover:bg-primary-fixed-dim/10 rounded-lg transition-all duration-200 font-label-bold text-label-bold" href="#">
+<span class="material-symbols-outlined">hotel</span>
+                    My Hotel
+                </a>
+</li>
+<li class="">
+<a class="flex items-center gap-4 px-4 py-3 text-on-primary/70 hover:text-on-primary hover:bg-primary-fixed-dim/10 rounded-lg transition-all duration-200 font-label-bold text-label-bold" href="#">
+<span class="material-symbols-outlined">bed</span>
+                    Rooms
+                </a>
+</li>
+<li class="">
+<a class="flex items-center gap-4 px-4 py-3 text-on-primary/70 hover:text-on-primary hover:bg-primary-fixed-dim/10 rounded-lg transition-all duration-200 font-label-bold text-label-bold" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+                    Bookings
+                </a>
+</li>
+<li class="">
+<a class="flex items-center gap-4 px-4 py-3 text-on-primary/70 hover:text-on-primary hover:bg-primary-fixed-dim/10 rounded-lg transition-all duration-200 font-label-bold text-label-bold" href="#">
+<span class="material-symbols-outlined">star</span>
+                    Reviews
+                </a>
+</li>
+<li class="">
+<a class="flex items-center gap-4 px-4 py-3 text-on-primary/70 hover:text-on-primary hover:bg-primary-fixed-dim/10 rounded-lg transition-all duration-200 font-label-bold text-label-bold" href="#">
+<span class="material-symbols-outlined">payments</span>
+                    Revenue
+                </a>
+</li>
+<li class="">
+<a class="flex items-center gap-4 px-4 py-3 text-on-primary/70 hover:text-on-primary hover:bg-primary-fixed-dim/10 rounded-lg transition-all duration-200 font-label-bold text-label-bold" href="#">
+<span class="material-symbols-outlined">cleaning_services</span>
+                    Cleaning
+                </a>
+</li>
+</ul>
+<!-- Footer Navigation Tabs -->
+<ul class="flex flex-col gap-2 mt-auto">
+<li class="">
+<a class="flex items-center gap-4 px-4 py-3 text-on-primary/70 hover:text-on-primary hover:bg-primary-fixed-dim/10 rounded-lg transition-all duration-200 font-label-bold text-label-bold" href="#">
+<span class="material-symbols-outlined">settings</span>
+                    Settings
+                </a>
+</li>
+<li class="">
+<a class="flex items-center gap-4 px-4 py-3 text-on-primary/70 hover:text-on-primary hover:bg-primary-fixed-dim/10 rounded-lg transition-all duration-200 font-label-bold text-label-bold" href="{{DATA:SCREEN:SCREEN_13}}">
+<span class="material-symbols-outlined">logout</span>
+                    Logout
+                </a>
+</li>
+</ul>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col h-full ml-64 overflow-hidden relative">
+<!-- TopAppBar (Shared Component) -->
+<header class="flex justify-between items-center h-16 px-8 w-full bg-surface-bright dark:bg-surface-dim border-b border-outline-variant text-primary dark:text-on-surface z-30 shrink-0">
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-surface-container-high transition-colors scale-98 duration-200 text-on-surface-variant">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h2 class="font-headline-md text-headline-md font-bold">Dashboard</h2>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-surface-container-high transition-colors scale-98 duration-200 text-on-surface-variant">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 rounded-full hover:bg-surface-container-high transition-colors scale-98 duration-200 text-on-surface-variant">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Scrollable Canvas -->
+<main class="flex-1 overflow-y-auto p-8 lg:px-margin-desktop lg:py-12 bg-[#F9F7F2]">
+<div class="max-w-container-max mx-auto space-y-gutter">
+<!-- Welcome Section -->
+<div class="mb-10">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-2">Welcome back, Manager</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Here is the overview of your hotel's performance today.</p>
+</div>
+<!-- Bento Grid: Stats & Analytics -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Stat Card 1: Total Bookings -->
+<div class="bg-surface-container-lowest rounded-xl p-6 luxury-shadow-1 border border-outline-variant/30 flex flex-col justify-between">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="font-label-bold text-label-bold text-on-surface-variant uppercase tracking-widest">Total Bookings</p>
+<h3 class="font-headline-md text-headline-md text-primary mt-2">1,248</h3>
+</div>
+<div class="p-3 bg-surface-container rounded-lg text-primary">
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">calendar_month</span>
+</div>
+</div>
+<div class="flex items-center gap-2 text-sm text-[#2e7d32]">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+<span class="font-medium">+12% vs last month</span>
+</div>
+</div>
+<!-- Stat Card 2: Revenue -->
+<div class="bg-surface-container-lowest rounded-xl p-6 luxury-shadow-1 border border-outline-variant/30 flex flex-col justify-between">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="font-label-bold text-label-bold text-on-surface-variant uppercase tracking-widest">Revenue</p>
+<h3 class="font-headline-md text-headline-md text-primary mt-2">$84,520</h3>
+</div>
+<div class="p-3 bg-secondary-container rounded-lg text-on-secondary-container">
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">payments</span>
+</div>
+</div>
+<div class="flex items-center gap-2 text-sm text-[#2e7d32]">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+<span class="font-medium">+8.5% vs last month</span>
+</div>
+</div>
+<!-- Stat Card 3: Available Rooms -->
+<div class="bg-surface-container-lowest rounded-xl p-6 luxury-shadow-1 border border-outline-variant/30 flex flex-col justify-between">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="font-label-bold text-label-bold text-on-surface-variant uppercase tracking-widest">Available Rooms</p>
+<h3 class="font-headline-md text-headline-md text-primary mt-2">42</h3>
+</div>
+<div class="p-3 bg-primary-container rounded-lg text-on-primary">
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">meeting_room</span>
+</div>
+</div>
+<div class="w-full bg-surface-variant rounded-full h-2 mt-4">
+<div class="bg-primary h-2 rounded-full" style="width: 35%"></div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2">35% availability</p>
+</div>
+<!-- Stat Card 4: Occupied Rooms -->
+<div class="bg-surface-container-lowest rounded-xl p-6 luxury-shadow-1 border border-outline-variant/30 flex flex-col justify-between">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="font-label-bold text-label-bold text-on-surface-variant uppercase tracking-widest">Occupied Rooms</p>
+<h3 class="font-headline-md text-headline-md text-primary mt-2">78</h3>
+</div>
+<div class="p-3 bg-surface-container-high rounded-lg text-primary">
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">bed</span>
+</div>
+</div>
+<div class="w-full bg-surface-variant rounded-full h-2 mt-4">
+<div class="bg-secondary h-2 rounded-full" style="width: 65%"></div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2">65% occupancy</p>
+</div>
+</div>
+<!-- Middle Section: Chart & Analytics -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-8">
+<!-- Revenue Chart (Spans 2 columns) -->
+<div class="lg:col-span-2 bg-surface-container-lowest rounded-xl p-8 luxury-shadow-1 border border-outline-variant/30">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline-md text-headline-md text-primary">Revenue Trends</h3>
+<select class="bg-surface border border-outline-variant rounded-lg px-4 py-2 font-body-sm text-body-sm text-on-surface focus:ring-secondary focus:border-secondary">
+<option>Last 6 Months</option>
+<option>This Year</option>
+</select>
+</div>
+<!-- Placeholder for Chart -->
+<div class="w-full h-64 bg-surface-container/50 rounded-lg flex items-center justify-center border border-dashed border-outline-variant relative overflow-hidden">
+<!-- Decorative visualization bars -->
+<div class="absolute bottom-0 left-0 w-full h-full flex items-end justify-between px-8 py-4 gap-4 opacity-70">
+<div class="w-full bg-primary-fixed-dim/30 rounded-t-sm h-[30%]"></div>
+<div class="w-full bg-primary-fixed-dim/30 rounded-t-sm h-[50%]"></div>
+<div class="w-full bg-primary-fixed-dim/30 rounded-t-sm h-[40%]"></div>
+<div class="w-full bg-secondary-container/60 rounded-t-sm h-[70%]"></div>
+<div class="w-full bg-primary-fixed-dim/30 rounded-t-sm h-[60%]"></div>
+<div class="w-full bg-primary-fixed-dim/30 rounded-t-sm h-[85%]"></div>
+</div>
+<span class="font-label-bold text-label-bold text-on-surface-variant relative z-10 bg-surface-container-lowest px-4 py-2 rounded shadow-sm">Interactive Chart Area</span>
+</div>
+</div>
+<!-- Analytics Summary Card -->
+<div class="bg-primary-container text-on-primary-container rounded-xl p-8 luxury-shadow-1 relative overflow-hidden flex flex-col justify-between">
+<!-- Decorative background element -->
+<div class="absolute -top-24 -right-24 w-48 h-48 bg-secondary rounded-full opacity-10 blur-3xl"></div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-primary mb-2">Booking Analytics</h3>
+<p class="font-body-sm text-body-sm text-on-primary/70 mb-8">Quick insights into your guest demographics and booking channels.</p>
+<div class="space-y-6">
+<div>
+<div class="flex justify-between font-body-sm text-body-sm mb-2">
+<span class="text-on-primary/80">Direct Bookings</span>
+<span class="font-bold text-on-primary">45%</span>
+</div>
+<div class="w-full bg-on-primary/10 rounded-full h-1.5">
+<div class="bg-secondary-fixed h-1.5 rounded-full" style="width: 45%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-body-sm text-body-sm mb-2">
+<span class="text-on-primary/80">Online Travel Agencies (OTAs)</span>
+<span class="font-bold text-on-primary">35%</span>
+</div>
+<div class="w-full bg-on-primary/10 rounded-full h-1.5">
+<div class="bg-primary-fixed h-1.5 rounded-full" style="width: 35%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-body-sm text-body-sm mb-2">
+<span class="text-on-primary/80">Corporate Accounts</span>
+<span class="font-bold text-on-primary">20%</span>
+</div>
+<div class="w-full bg-on-primary/10 rounded-full h-1.5">
+<div class="bg-tertiary-fixed-dim h-1.5 rounded-full" style="width: 20%"></div>
+</div>
+</div>
+</div>
+</div>
+<button class="mt-8 w-full py-3 border border-on-primary/20 rounded-lg text-on-primary hover:bg-on-primary/10 transition-colors font-button text-button">View Detailed Report</button>
+</div>
+</div>
+<!-- Bottom Section: Recent Bookings Table -->
+<div class="mt-8 bg-surface-container-lowest rounded-xl luxury-shadow-1 border border-outline-variant/30 overflow-hidden">
+<div class="p-6 border-b border-outline-variant/30 flex justify-between items-center bg-surface-bright">
+<h3 class="font-headline-md text-headline-md text-primary">Recent Bookings</h3>
+<button class="font-button text-button text-secondary hover:text-on-secondary-fixed-variant transition-colors flex items-center gap-1">
+                            View All <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface text-on-surface-variant font-label-bold text-label-bold uppercase tracking-wider border-b border-outline-variant/30">
+<th class="px-6 py-4 font-medium">Guest</th>
+<th class="px-6 py-4 font-medium">Room</th>
+<th class="px-6 py-4 font-medium">Dates</th>
+<th class="px-6 py-4 font-medium">Amount</th>
+<th class="px-6 py-4 font-medium">Status</th>
+<th class="px-6 py-4 font-medium text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="font-body-sm text-body-sm divide-y divide-outline-variant/20">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-bold text-xs">EJ</div>
+<div>
+<p class="font-medium text-primary group-hover:text-secondary transition-colors">Eleanor James</p>
+<p class="text-xs text-on-surface-variant">el.james@example.com</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-on-surface">Deluxe Suite - 402</td>
+<td class="px-6 py-4 text-on-surface-variant">Oct 12 - Oct 15</td>
+<td class="px-6 py-4 font-medium text-primary">$1,250</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#e8f5e9] text-[#2e7d32]">Confirmed</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-1.5 text-outline hover:text-primary transition-colors rounded hover:bg-surface-variant" title="Edit">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 (Pending) -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold text-xs">MC</div>
+<div>
+<p class="font-medium text-primary group-hover:text-secondary transition-colors">Marcus Chen</p>
+<p class="text-xs text-on-surface-variant">m.chen@example.com</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-on-surface">Standard King - 215</td>
+<td class="px-6 py-4 text-on-surface-variant">Oct 18 - Oct 20</td>
+<td class="px-6 py-4 font-medium text-primary">$480</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#fff3e0] text-[#e65100]">Pending</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="px-3 py-1 bg-[#2e7d32] text-white rounded font-button text-xs hover:bg-[#1b5e20] transition-colors">Accept</button>
+<button class="px-3 py-1 border border-error text-error rounded font-button text-xs hover:bg-error-container transition-colors">Reject</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-tint text-on-primary flex items-center justify-center font-bold text-xs">SW</div>
+<div>
+<p class="font-medium text-primary group-hover:text-secondary transition-colors">Sarah Williams</p>
+<p class="text-xs text-on-surface-variant">swilliams@example.com</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-on-surface">Ocean View - 501</td>
+<td class="px-6 py-4 text-on-surface-variant">Oct 22 - Oct 29</td>
+<td class="px-6 py-4 font-medium text-primary">$3,100</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#e8f5e9] text-[#2e7d32]">Confirmed</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-1.5 text-outline hover:text-primary transition-colors rounded hover:bg-surface-variant" title="Edit">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Spacer for bottom padding -->
+<div class="h-12"></div>
+</main>
+</div>
+
+
+
+
+</body></html>

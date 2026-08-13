@@ -1,0 +1,299 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>StayEase - Hotel Owner Registration</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#c8c6c2",
+                        "error-container": "#ffdad6",
+                        "secondary": "#775a19",
+                        "surface-bright": "#f9f9ff",
+                        "on-secondary-fixed-variant": "#5d4201",
+                        "surface-container": "#e7eefe",
+                        "primary": "#041627",
+                        "secondary-fixed-dim": "#e9c176",
+                        "secondary-container": "#fed488",
+                        "outline": "#74777d",
+                        "on-error-container": "#93000a",
+                        "tertiary-container": "#292a27",
+                        "surface-container-highest": "#dce2f3",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed": "#1b1c19",
+                        "primary-container": "#1a2b3c",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed": "#261900",
+                        "on-background": "#151c27",
+                        "surface-container-low": "#f0f3ff",
+                        "surface-tint": "#4f6073",
+                        "inverse-primary": "#b7c8de",
+                        "tertiary-fixed": "#e4e2dd",
+                        "primary-fixed-dim": "#b7c8de",
+                        "surface": "#f9f9ff",
+                        "surface-variant": "#dce2f3",
+                        "on-surface-variant": "#44474c",
+                        "primary-fixed": "#d2e4fb",
+                        "on-error": "#ffffff",
+                        "background": "#f9f9ff",
+                        "tertiary": "#151613",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-container": "#785a1a",
+                        "on-tertiary-fixed-variant": "#474744",
+                        "on-surface": "#151c27",
+                        "on-primary-fixed": "#0b1d2d",
+                        "surface-container-high": "#e2e8f8",
+                        "surface-dim": "#d3daea",
+                        "secondary-fixed": "#ffdea5",
+                        "error": "#ba1a1a",
+                        "outline-variant": "#c4c6cd",
+                        "on-primary-container": "#8192a7",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-container": "#91918d",
+                        "inverse-surface": "#2a313d",
+                        "on-primary-fixed-variant": "#38485a",
+                        "inverse-on-surface": "#ebf1ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "container-max": "1440px",
+                        "unit": "8px",
+                        "margin-mobile": "20px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "headline-xl": ["Playfair Display"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "label-bold": ["Inter"],
+                        "button": ["Inter"],
+                        "headline-md": ["Playfair Display"],
+                        "body-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "headline-xl": ["60px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "label-bold": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "button": ["14px", { "lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "headline-lg": ["40px", { "lineHeight": "1.2", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .filled-icon {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Custom file input styling */
+        input[type="file"]::file-selector-button {
+            display: none;
+        }
+        
+        /* Smooth transitions for the overlay */
+        #success-overlay {
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        #success-overlay.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        #success-overlay:not(.hidden) {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+        
+        /* Progress line animation */
+        .progress-line {
+            transition: width 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md font-body-md min-h-screen flex flex-col relative overflow-x-hidden">
+<!-- Top Navigation Bar (Suppressed for Transactional Page) -->
+<!-- Content Canvas -->
+<main class="flex-grow flex flex-col items-center justify-center py-margin-desktop px-margin-mobile md:px-margin-desktop w-full max-w-container-max mx-auto relative z-10">
+<!-- Registration Container -->
+<div class="w-full max-w-3xl bg-surface-container-lowest rounded-xl shadow-[0px_12px_40px_rgba(26,43,60,0.12)] p-8 md:p-12 relative overflow-hidden">
+<!-- Branding -->
+<div class="text-center mb-10">
+<h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-2"><a href="{{DATA:SCREEN:SCREEN_2}}" class="hover:opacity-80 transition-opacity">StayEase</a></h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Hotel Owner Registration</p>
+</div>
+<!-- Progress Indicator -->
+<div class="mb-12 relative">
+<div class="flex justify-between relative z-10">
+<!-- Step 1 -->
+<div class="flex flex-col items-center gap-2 w-1/4">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</div>
+<span class="font-label-bold text-label-bold text-primary hidden md:block text-center mt-2">Basic Info</span>
+</div>
+<!-- Step 2 -->
+<div class="flex flex-col items-center gap-2 w-1/4">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</div>
+<span class="font-label-bold text-label-bold text-primary hidden md:block text-center mt-2">Location</span>
+</div>
+<!-- Step 3 -->
+<div class="flex flex-col items-center gap-2 w-1/4">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</div>
+<span class="font-label-bold text-label-bold text-primary hidden md:block text-center mt-2">Details</span>
+</div>
+<!-- Step 4 (Active) -->
+<div class="flex flex-col items-center gap-2 w-1/4">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container ring-4 ring-primary-container/20 flex items-center justify-center z-10">
+<span class="font-label-bold text-label-bold">4</span>
+</div>
+<span class="font-label-bold text-label-bold text-primary-container hidden md:block text-center mt-2">Documents</span>
+</div>
+</div>
+<!-- Progress Line -->
+<div class="absolute top-4 left-0 w-full h-0.5 bg-surface-variant -z-0 translate-y-[-50%] px-8">
+<div class="h-full bg-primary progress-line w-[75%] rounded-full"></div>
+</div>
+</div>
+<!-- Step Title -->
+<div class="mb-8">
+<h2 class="font-headline-md text-headline-md text-primary mb-2">Document Upload</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Please provide the necessary documents and media to finalize your registration. Ensure all files are clear and legible.</p>
+</div>
+<!-- Upload Grid -->
+<form class="space-y-6" id="registration-form">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Business License -->
+<div class="border border-outline-variant rounded-lg p-6 flex flex-col items-center justify-center text-center hover:border-primary-container transition-colors bg-surface group relative overflow-hidden cursor-pointer">
+<input aria-label="Upload Business License" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" id="biz-license" required="" type="file">
+<span aria-hidden="true" class="material-symbols-outlined text-4xl text-on-surface-variant mb-4 group-hover:text-primary-container transition-colors">description</span>
+<h3 class="font-label-bold text-label-bold text-on-surface mb-1">Business License</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">PDF, JPG or PNG (Max 5MB)</p>
+<div class="mt-4 px-4 py-2 bg-surface-container-high rounded-full font-button text-button text-on-surface-variant group-hover:bg-primary-container group-hover:text-on-primary-container transition-colors pointer-events-none">
+                            Select File
+                        </div>
+</div>
+<!-- Identity Verification -->
+<div class="border border-outline-variant rounded-lg p-6 flex flex-col items-center justify-center text-center hover:border-primary-container transition-colors bg-surface group relative overflow-hidden cursor-pointer">
+<input aria-label="Upload Identity Verification" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" id="id-verification" required="" type="file">
+<span aria-hidden="true" class="material-symbols-outlined text-4xl text-on-surface-variant mb-4 group-hover:text-primary-container transition-colors">badge</span>
+<h3 class="font-label-bold text-label-bold text-on-surface mb-1">Identity Verification</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Government Issued ID</p>
+<div class="mt-4 px-4 py-2 bg-surface-container-high rounded-full font-button text-button text-on-surface-variant group-hover:bg-primary-container group-hover:text-on-primary-container transition-colors pointer-events-none">
+                            Select File
+                        </div>
+</div>
+<!-- Hotel Logo -->
+<div class="border border-outline-variant rounded-lg p-6 flex flex-col items-center justify-center text-center hover:border-primary-container transition-colors bg-surface group relative overflow-hidden cursor-pointer">
+<input accept="image/*" aria-label="Upload Hotel Logo" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" id="hotel-logo" required="" type="file">
+<span aria-hidden="true" class="material-symbols-outlined text-4xl text-on-surface-variant mb-4 group-hover:text-primary-container transition-colors">image</span>
+<h3 class="font-label-bold text-label-bold text-on-surface mb-1">Hotel Logo</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">High-res PNG or SVG</p>
+<div class="mt-4 px-4 py-2 bg-surface-container-high rounded-full font-button text-button text-on-surface-variant group-hover:bg-primary-container group-hover:text-on-primary-container transition-colors pointer-events-none">
+                            Select Image
+                        </div>
+</div>
+<!-- Cover Image -->
+<div class="border border-outline-variant rounded-lg p-6 flex flex-col items-center justify-center text-center hover:border-primary-container transition-colors bg-surface group relative overflow-hidden cursor-pointer">
+<input accept="image/*" aria-label="Upload Cover Image" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" id="cover-image" required="" type="file">
+<span aria-hidden="true" class="material-symbols-outlined text-4xl text-on-surface-variant mb-4 group-hover:text-primary-container transition-colors">wallpaper</span>
+<h3 class="font-label-bold text-label-bold text-on-surface mb-1">Cover Image</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Main property photo (16:9)</p>
+<div class="mt-4 px-4 py-2 bg-surface-container-high rounded-full font-button text-button text-on-surface-variant group-hover:bg-primary-container group-hover:text-on-primary-container transition-colors pointer-events-none">
+                            Select Image
+                        </div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="pt-8 mt-8 border-t border-outline-variant flex flex-col-reverse md:flex-row justify-between items-center gap-4">
+<a href="{{DATA:SCREEN:SCREEN_12}}" class="w-full md:w-auto px-6 py-3 border border-primary-container text-primary-container rounded font-button text-button hover:bg-surface-container transition-colors flex items-center justify-center">Back to Details</a>
+<a href="{{DATA:SCREEN:SCREEN_9}}" class="w-full md:w-auto px-8 py-3 bg-[#C5A059] text-on-primary rounded font-button text-button hover:scale-105 transition-transform shadow-sm flex items-center justify-center" id="submit-btn">Submit Registration</a>
+</div>
+</form>
+</div>
+</main>
+<!-- Success Overlay -->
+<div class="hidden fixed inset-0 z-50 flex items-center justify-center bg-primary/80 backdrop-blur-sm p-margin-mobile" id="success-overlay">
+<div class="bg-surface-container-lowest rounded-xl shadow-[0px_12px_40px_rgba(26,43,60,0.12)] p-10 max-w-lg w-full text-center relative overflow-hidden">
+<!-- Decorative Background Element -->
+<div class="absolute top-0 left-0 w-full h-32 bg-secondary-fixed/20 -z-0"></div>
+<div class="relative z-10 flex flex-col items-center">
+<div class="w-20 h-20 bg-[#C5A059] rounded-full flex items-center justify-center mb-6 shadow-md text-on-primary">
+<span class="material-symbols-outlined text-4xl">task_alt</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-primary mb-4">Registration Submitted</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8">
+                    Your hotel registration request has been successfully submitted and is currently pending admin approval. We will notify you via email once reviewed.
+                </p>
+<button class="px-8 py-3 bg-primary-container text-on-primary-container rounded font-button text-button hover:scale-105 transition-transform shadow-sm" onclick="closeOverlay()" type="button">
+                    Return to Home
+                </button>
+</div>
+</div>
+</div>
+<!-- Background Image -->
+<div class="fixed inset-0 w-full h-full -z-10 opacity-30 pointer-events-none" data-alt="A luxurious, minimalist hotel lobby with soft, ambient lighting, high ceilings, elegant architectural lines, and large windows allowing natural light to fill the spacious, professional reception area, reinforcing a modern, premium aesthetic with subtle gold and deep navy accents." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB-xCvuvZmirrbmj4O4QbLrY8pyua51OkhgSpeVBJ0IvnVAgLwV1As2hs41Z4Ti81HWtkYKWHqoZkjdwhWLoYZEGpjJ52s-kV7e6xNYz6WCEnzDS6BydaFVP_MHIQY3x_TB6H2IffCzWYU_EWIEsW7JopxWd60cZZKJEpplSCTneGtVy1WhfY09lD1J_26_HbP7zKKdrCniB_Z6AOzpEw9h1cK0mCxaqY6Chd3TzqPfrjCtS5ZcWhg'); background-size: cover; background-position: center;">
+</div>
+<script>
+        document.getElementById('registration-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Show overlay
+            const overlay = document.getElementById('success-overlay');
+            overlay.classList.remove('hidden');
+        });
+
+        function closeOverlay() {
+            // In a real app, this might redirect
+            const overlay = document.getElementById('success-overlay');
+            overlay.classList.add('hidden');
+            // Reset form for demo purposes
+            document.getElementById('registration-form').reset();
+        }
+
+        // Simple visual feedback for file inputs
+        const fileInputs = document.querySelectorAll('input[type="file"]');
+        fileInputs.forEach(input => {
+            input.addEventListener('change', function() {
+                if (this.files && this.files[0]) {
+                    const parent = this.parentElement;
+                    const buttonText = parent.querySelector('div.mt-4');
+                    if(buttonText) {
+                        buttonText.textContent = 'File Selected';
+                        buttonText.classList.add('bg-[#C5A059]', 'text-white');
+                        buttonText.classList.remove('bg-surface-container-high', 'text-on-surface-variant');
+                        parent.classList.add('border-[#C5A059]');
+                    }
+                }
+            });
+        });
+    </script>
+
+
+
+</body></html>

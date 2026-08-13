@@ -1,0 +1,332 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>StayEase - Hotels</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#c8c6c2",
+                        "error-container": "#ffdad6",
+                        "secondary": "#775a19",
+                        "surface-bright": "#f9f9ff",
+                        "on-secondary-fixed-variant": "#5d4201",
+                        "surface-container": "#e7eefe",
+                        "primary": "#041627",
+                        "secondary-fixed-dim": "#e9c176",
+                        "secondary-container": "#fed488",
+                        "outline": "#74777d",
+                        "on-error-container": "#93000a",
+                        "tertiary-container": "#292a27",
+                        "surface-container-highest": "#dce2f3",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed": "#1b1c19",
+                        "primary-container": "#1a2b3c",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed": "#261900",
+                        "on-background": "#151c27",
+                        "surface-container-low": "#f0f3ff",
+                        "surface-tint": "#4f6073",
+                        "inverse-primary": "#b7c8de",
+                        "tertiary-fixed": "#e4e2dd",
+                        "primary-fixed-dim": "#b7c8de",
+                        "surface": "#f9f9ff",
+                        "surface-variant": "#dce2f3",
+                        "on-surface-variant": "#44474c",
+                        "primary-fixed": "#d2e4fb",
+                        "on-error": "#ffffff",
+                        "background": "#f9f9ff",
+                        "tertiary": "#151613",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-container": "#785a1a",
+                        "on-tertiary-fixed-variant": "#474744",
+                        "on-surface": "#151c27",
+                        "on-primary-fixed": "#0b1d2d",
+                        "surface-container-high": "#e2e8f8",
+                        "surface-dim": "#d3daea",
+                        "secondary-fixed": "#ffdea5",
+                        "error": "#ba1a1a",
+                        "outline-variant": "#c4c6cd",
+                        "on-primary-container": "#8192a7",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-container": "#91918d",
+                        "inverse-surface": "#2a313d",
+                        "on-primary-fixed-variant": "#38485a",
+                        "inverse-on-surface": "#ebf1ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "container-max": "1440px",
+                        "unit": "8px",
+                        "margin-mobile": "20px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "headline-xl": ["Playfair Display"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "label-bold": ["Inter"],
+                        "button": ["Inter"],
+                        "headline-md": ["Playfair Display"],
+                        "body-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "headline-xl": ["60px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "label-bold": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "button": ["14px", { "lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "headline-lg": ["40px", { "lineHeight": "1.2", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+        .luxury-shadow {
+            box-shadow: 0px 4px 20px rgba(26, 43, 60, 0.05);
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col pt-20">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-desktop h-20 max-w-container-max mx-auto bg-surface dark:bg-primary shadow-sm dark:shadow-none">
+<a href="{{DATA:SCREEN:SCREEN_2}}" class="text-headline-md font-headline-md font-bold text-primary dark:text-on-primary">StayEase</a>
+<div class="flex gap-8 hidden md:flex">
+<a class="text-secondary border-b-2 border-secondary pb-1 font-label-bold text-label-bold" href="{{DATA:SCREEN:SCREEN_15}}">Hotels</a>
+<a class="text-on-surface dark:text-on-primary hover:text-secondary transition-colors duration-200 font-label-bold text-label-bold" href="#">Reviews</a>
+<a class="text-on-surface dark:text-on-primary hover:text-secondary transition-colors duration-200 font-label-bold text-label-bold" href="#">About Us</a>
+</div>
+<div class="flex items-center gap-4 hidden md:flex">
+<a href="{{DATA:SCREEN:SCREEN_13}}" class="font-button text-button text-on-surface hover:text-secondary transition-colors">Login</a>
+<a href="{{DATA:SCREEN:SCREEN_12}}" class="bg-[#C5A059] text-white px-6 py-3 font-button text-button hover:scale-105 transition-transform duration-150 ease-in-out">List Your Hotel</a>
+</div>
+</nav>
+<main class="flex-grow max-w-container-max mx-auto w-full px-margin-desktop py-12 flex flex-col md:flex-row gap-gutter">
+<!-- Sidebar Filters -->
+<aside class="w-full md:w-1/4 shrink-0 space-y-8">
+<div>
+<h2 class="font-headline-md text-headline-md text-primary mb-6">Refine Search</h2>
+<div class="space-y-6">
+<!-- Location -->
+<div>
+<label class="block font-label-bold text-label-bold text-on-surface-variant mb-2">Location</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">location_on</span>
+<input class="w-full pl-10 pr-4 py-3 bg-surface-bright border border-outline-variant rounded-DEFAULT focus:outline-none focus:border-secondary font-body-sm text-body-sm text-on-surface" placeholder="Where to?" type="text">
+</div>
+</div>
+<!-- Category -->
+<div>
+<label class="block font-label-bold text-label-bold text-on-surface-variant mb-2">Category</label>
+<select class="w-full px-4 py-3 bg-surface-bright border border-outline-variant rounded-DEFAULT focus:outline-none focus:border-secondary font-body-sm text-body-sm text-on-surface appearance-none">
+<option>Luxury Resorts</option>
+<option>Boutique Hotels</option>
+<option>Business Stays</option>
+<option>Villas</option>
+</select>
+</div>
+<!-- Price Range -->
+<div>
+<label class="block font-label-bold text-label-bold text-on-surface-variant mb-2">Price Range / Night</label>
+<input class="w-full accent-[#C5A059]" max="2000" min="100" type="range">
+<div class="flex justify-between font-body-sm text-body-sm text-on-surface-variant mt-2">
+<span class="">$100</span>
+<span class="">$2000+</span>
+</div>
+</div>
+<!-- Star Rating -->
+<div>
+<label class="block font-label-bold text-label-bold text-on-surface-variant mb-3">Star Rating</label>
+<div class="flex gap-2">
+<a href="#" class="flex-1 py-2 border border-outline-variant rounded-DEFAULT font-label-bold text-label-bold text-on-surface hover:border-secondary hover:text-secondary transition-colors text-center">3 <span class="material-symbols-outlined text-[14px] align-middle">star</span></a>
+<a href="#" class="flex-1 py-2 border border-outline-variant rounded-DEFAULT font-label-bold text-label-bold text-on-surface hover:border-secondary hover:text-secondary transition-colors text-center">4 <span class="material-symbols-outlined text-[14px] align-middle">star</span></a>
+<a href="#" class="flex-1 py-2 border border-secondary bg-secondary-container/20 rounded-DEFAULT font-label-bold text-label-bold text-secondary transition-colors text-center">5 <span class="material-symbols-outlined text-[14px] align-middle">star</span></a>
+</div>
+</div>
+</div>
+</div>
+<button class="w-full bg-primary text-white py-4 font-button text-button hover:bg-primary-container transition-colors">Apply Filters</button>
+</aside>
+<!-- Main Content -->
+<section class="w-full md:w-3/4">
+<div class="flex justify-between items-end mb-8">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-primary">Curated Selections</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">Discover 124 luxury stays matching your criteria.</p>
+</div>
+<div class="hidden md:flex gap-4">
+<button class="p-2 border border-outline-variant rounded-DEFAULT text-on-surface hover:text-secondary transition-colors"><span class="material-symbols-outlined">grid_view</span></button>
+<button class="p-2 border border-outline-variant rounded-DEFAULT text-on-surface hover:text-secondary transition-colors"><span class="material-symbols-outlined">view_list</span></button>
+</div>
+</div>
+<!-- Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<!-- Card 1 -->
+<div class="bg-white luxury-shadow rounded-[16px] overflow-hidden group">
+<div class="relative h-64 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A breathtaking view of a modern luxury resort pool at sunset. The infinity pool seamlessly blends with the ocean horizon. Elegant cabanas line the deck under soft, warm lighting. The architecture features clean lines and natural wood elements, conveying a serene and exclusive atmosphere typical of high-end hospitality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0E-NLS4ZiNyQjz1zE3tIahS0OkwD3wL0e1BZ5tQnBvf3p3eio678ODCvmmJpBvbYRE8D9_cGEO3wayOznXi4vOp_lblU2B9zJ0-CAHB5MjsPZb4Gi-BR_wXtKY7aSH7UqXgnN7XD8msNWmQhjuVmfM077hmGKbiKSE29rQMhNZCdqCbJ2YxOk0lL-7LkTUwRSYXHzJ7TERKNtlgBfqcgDzC-_ZZxE8uAdeSqlHQ2oXJK39vmnn4M">
+<div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full flex items-center gap-1 font-label-bold text-label-bold text-primary">
+<span class="material-symbols-outlined text-[14px] text-[#C5A059]" style="font-variation-settings: 'FILL' 1;">star</span> 4.9
+                        </div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-primary">The Azure Retreat</h3>
+<div class="text-right">
+<span class="block font-headline-md text-headline-md text-[#C5A059]">$450</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/ night</span>
+</div>
+</div>
+<div class="flex items-center gap-1 font-body-sm text-body-sm text-on-surface-variant mb-6">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+                            Santorini, Greece
+                        </div>
+<div class="flex items-center gap-4 mb-6 pt-4 border-t border-outline-variant/30">
+<div class="flex items-center gap-1 text-on-surface-variant" title="Free WiFi"><span class="material-symbols-outlined text-[20px]">wifi</span></div>
+<div class="flex items-center gap-1 text-on-surface-variant" title="Infinity Pool"><span class="material-symbols-outlined text-[20px]">pool</span></div>
+<div class="flex items-center gap-1 text-on-surface-variant" title="Luxury Spa"><span class="material-symbols-outlined text-[20px]">spa</span></div>
+</div>
+<a href="{{DATA:SCREEN:SCREEN_14}}" class="block w-full bg-transparent border border-primary text-primary py-3 font-button text-button hover:bg-[#C5A059] hover:border-[#C5A059] hover:text-white transition-all duration-300 text-center">View Details</a>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-white luxury-shadow rounded-[16px] overflow-hidden group">
+<div class="relative h-64 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A sophisticated boutique hotel bedroom interior. The room features a plush king-size bed with crisp white linens and a velvet headboard. Large floor-to-ceiling windows offer a stunning view of a vibrant cityscape at twilight. The lighting is ambient and luxurious, highlighting textures of wood and brass accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1hi80ClVSDW6SOLWkPqA8xdN1xgCYO8IL1Z9uyiCAT74wwAqEIKdui2DjxWJdtn3_KVJRGNTlOiHCk-Kn8gbHa-R__1yQ3BfVJOi7USW65zC83wo6Q-xFn2LwE4CG5XJrFBbgKV0ZUDpMB7TS0Isk-IagLO6Cowrz_IkZycwj3kGip3rrfE3HvT9I9PgjRt0KvLIU8SkMkEC6U1013CIPqiGl-Dx_6RYsTQ3QUWMH-qsS7sI2f6A">
+<div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full flex items-center gap-1 font-label-bold text-label-bold text-primary">
+<span class="material-symbols-outlined text-[14px] text-[#C5A059]" style="font-variation-settings: 'FILL' 1;">star</span> 4.8
+                        </div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-primary">Metropolis Suites</h3>
+<div class="text-right">
+<span class="block font-headline-md text-headline-md text-[#C5A059]">$320</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/ night</span>
+</div>
+</div>
+<div class="flex items-center gap-1 font-body-sm text-body-sm text-on-surface-variant mb-6">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+                            New York City, USA
+                        </div>
+<div class="flex items-center gap-4 mb-6 pt-4 border-t border-outline-variant/30">
+<div class="flex items-center gap-1 text-on-surface-variant" title="Free WiFi"><span class="material-symbols-outlined text-[20px]">wifi</span></div>
+<div class="flex items-center gap-1 text-on-surface-variant" title="Fitness Center"><span class="material-symbols-outlined text-[20px]">fitness_center</span></div>
+<div class="flex items-center gap-1 text-on-surface-variant" title="Room Service"><span class="material-symbols-outlined text-[20px]">room_service</span></div>
+</div>
+<a href="{{DATA:SCREEN:SCREEN_14}}" class="block w-full bg-transparent border border-primary text-primary py-3 font-button text-button hover:bg-[#C5A059] hover:border-[#C5A059] hover:text-white transition-all duration-300 text-center">View Details</a>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-white luxury-shadow rounded-[16px] overflow-hidden group">
+<div class="relative h-64 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A serene alpine resort nestled in snowy mountains. The exterior features dark timber and expansive glass facades glowing warmly against the twilight snow. A steaming outdoor hot tub sits on a wooden deck overlooking majestic peaks. The atmosphere is cozy, exclusive, and breathtakingly beautiful." src="https://lh3.googleusercontent.com/aida-public/AB6AXuABEndRblCKMo3g6MmGkHbTlUP7wnNv_3FJxbhQqmaJbSx874vcajkp7iptwwx5ZnnKSWLyv_LMJILfZ_yPNMDpYKDSdCuiScYAH9504XrEpkhfFJPXtmkqKyrijWR20rugrtO4fuwd0K3rvTiNiDIAZiGlxzRp4TfvgzlAqnJ3uYEkqSdlAcpPczMKbwmXvcQZeblpp_iK-l4prdev3qQpBKa3UZTEIUL_ZFCSm7aamt6q5Jy_4do">
+<div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full flex items-center gap-1 font-label-bold text-label-bold text-primary">
+<span class="material-symbols-outlined text-[14px] text-[#C5A059]" style="font-variation-settings: 'FILL' 1;">star</span> 5.0
+                        </div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-primary">Alpine Pinnacle</h3>
+<div class="text-right">
+<span class="block font-headline-md text-headline-md text-[#C5A059]">$850</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/ night</span>
+</div>
+</div>
+<div class="flex items-center gap-1 font-body-sm text-body-sm text-on-surface-variant mb-6">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+                            Swiss Alps, Switzerland
+                        </div>
+<div class="flex items-center gap-4 mb-6 pt-4 border-t border-outline-variant/30">
+<div class="flex items-center gap-1 text-on-surface-variant" title="Free WiFi"><span class="material-symbols-outlined text-[20px]">wifi</span></div>
+<div class="flex items-center gap-1 text-on-surface-variant" title="Hot Tub"><span class="material-symbols-outlined text-[20px]">hot_tub</span></div>
+<div class="flex items-center gap-1 text-on-surface-variant" title="Fine Dining"><span class="material-symbols-outlined text-[20px]">restaurant</span></div>
+</div>
+<a href="{{DATA:SCREEN:SCREEN_14}}" class="block w-full bg-transparent border border-primary text-primary py-3 font-button text-button hover:bg-[#C5A059] hover:border-[#C5A059] hover:text-white transition-all duration-300 text-center">View Details</a>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-white luxury-shadow rounded-[16px] overflow-hidden group">
+<div class="relative h-64 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="An expansive open-air lounge area of a tropical eco-resort. Lush green jungle foliage surrounds the elegant minimalist wooden furniture. Soft sheer curtains blow gently in the breeze. The aesthetic is organic luxury, blending modern design with natural elements under a bright, airy canopy." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcuTq4F05CZEA34QhaEqmZvW3WYIi2e6BxWU_80FERkalLTydj5Pol56qN-FJKGXdRvuVEtO5iJUZrYGB-DFFdIJ6Jdl5rH6IeV6cSzH2PTjnBlbsaLVEctZOROXF0NbZ83yEv71X15Jku7WcZv4lKlGOd0bOpxXQ8wR5wlaHp8pLNlD5lTDKUYEey6kcrPgEvcqM0gMzd1PboAiFKddYKa3CPD66PNrivOfPxb0VprDv-3c6noUI">
+<div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full flex items-center gap-1 font-label-bold text-label-bold text-primary">
+<span class="material-symbols-outlined text-[14px] text-[#C5A059]" style="font-variation-settings: 'FILL' 1;">star</span> 4.7
+                        </div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-primary">Jungle Haven</h3>
+<div class="text-right">
+<span class="block font-headline-md text-headline-md text-[#C5A059]">$290</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/ night</span>
+</div>
+</div>
+<div class="flex items-center gap-1 font-body-sm text-body-sm text-on-surface-variant mb-6">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+                            Bali, Indonesia
+                        </div>
+<div class="flex items-center gap-4 mb-6 pt-4 border-t border-outline-variant/30">
+<div class="flex items-center gap-1 text-on-surface-variant" title="Free WiFi"><span class="material-symbols-outlined text-[20px]">wifi</span></div>
+<div class="flex items-center gap-1 text-on-surface-variant" title="Pool"><span class="material-symbols-outlined text-[20px]">pool</span></div>
+<div class="flex items-center gap-1 text-on-surface-variant" title="Eco Friendly"><span class="material-symbols-outlined text-[20px]">eco</span></div>
+</div>
+<a href="{{DATA:SCREEN:SCREEN_14}}" class="block w-full bg-transparent border border-primary text-primary py-3 font-button text-button hover:bg-[#C5A059] hover:border-[#C5A059] hover:text-white transition-all duration-300 text-center">View Details</a>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="flex justify-center items-center gap-2 mt-12">
+<button class="w-10 h-10 flex items-center justify-center border border-outline-variant rounded-full text-on-surface hover:border-primary hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">chevron_left</span></button>
+<button class="w-10 h-10 flex items-center justify-center bg-primary text-white rounded-full font-label-bold text-label-bold">1</button>
+<button class="w-10 h-10 flex items-center justify-center border border-outline-variant rounded-full text-on-surface hover:border-primary hover:text-primary transition-colors font-label-bold text-label-bold">2</button>
+<button class="w-10 h-10 flex items-center justify-center border border-outline-variant rounded-full text-on-surface hover:border-primary hover:text-primary transition-colors font-label-bold text-label-bold">3</button>
+<span class="text-on-surface-variant">...</span>
+<button class="w-10 h-10 flex items-center justify-center border border-outline-variant rounded-full text-on-surface hover:border-primary hover:text-primary transition-colors font-label-bold text-label-bold">8</button>
+<button class="w-10 h-10 flex items-center justify-center border border-outline-variant rounded-full text-on-surface hover:border-primary hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">chevron_right</span></button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 px-margin-desktop flex flex-col items-center gap-8 bg-primary dark:bg-tertiary-container mt-20">
+<div class="text-headline-md font-headline-md text-secondary-fixed">
+            StayEase
+        </div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="font-label-bold text-label-bold text-on-primary/60 hover:text-secondary-fixed transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-bold text-label-bold text-on-primary/60 hover:text-secondary-fixed transition-colors" href="#">Terms of Service</a>
+<a class="font-label-bold text-label-bold text-on-primary/60 hover:text-secondary-fixed transition-colors" href="#">Contact Support</a>
+<a class="font-label-bold text-label-bold text-on-primary/60 hover:text-secondary-fixed transition-colors" href="#">Partner Hub</a>
+</div>
+<div class="font-body-sm text-body-sm text-on-primary/60 mt-4 text-center">
+            © 2024 StayEase Luxury Hotels. All rights reserved.
+        </div>
+</footer>
+
+
+
+
+</body></html>

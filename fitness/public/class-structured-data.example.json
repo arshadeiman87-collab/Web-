@@ -1,0 +1,13 @@
+{
+  "@context":"https://schema.org",
+  "@type":"SportsActivityLocation",
+  "name":"FitFlow Demo Gym",
+  "url":"https://example.com/classes",
+  "event":{
+    "@type":"SportsEvent",
+    "name":"Power Yoga",
+    "startDate":"2026-08-21T09:30:00+01:00",
+    "location":{"@type":"SportsActivityLocation","name":"FitFlow Demo Gym"},
+    "offers":{"@type":"Offer","availability":"https://schema.org/InStock"}
+  }
+}

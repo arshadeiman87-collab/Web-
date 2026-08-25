@@ -1,0 +1,18 @@
+CERTICANVAS DEMO DETAILS
+========================
+Login Email: admin@demo.com
+Password: admin123
+
+Demo features:
+1. Choose multiple certificate templates.
+2. Upload logo, icon, signature and stamp.
+3. Edit recipient and certificate information.
+4. Save issued certificates.
+5. Search and reopen saved records.
+6. Export to PDF.
+7. Print certificate.
+8. Responsive web layout.
+9. Electron desktop shell.
+
+Storage note:
+Demo records are stored in browser localStorage. Production version should use a database such as Supabase/MySQL.

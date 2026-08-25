@@ -1,0 +1,13 @@
+import 'dotenv/config';
+import express from 'express'; import cors from 'cors'; import Stripe from 'stripe'; import twilio from 'twilio'; import sgMail from '@sendgrid/mail'; import {createClient} from '@supabase/supabase-js';
+const app=express(); app.use(cors()); app.use(express.json());
+const supabase=process.env.SUPABASE_URL&&process.env.SUPABASE_SERVICE_ROLE_KEY?createClient(process.env.SUPABASE_URL,process.env.SUPABASE_SERVICE_ROLE_KEY):null;
+const stripe=process.env.STRIPE_SECRET_KEY?new Stripe(process.env.STRIPE_SECRET_KEY):null;
+if(process.env.SENDGRID_API_KEY)sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+const twilioClient=process.env.TWILIO_ACCOUNT_SID&&process.env.TWILIO_AUTH_TOKEN?twilio(process.env.TWILIO_ACCOUNT_SID,process.env.TWILIO_AUTH_TOKEN):null;
+app.get('/api/health',(req,res)=>res.json({ok:true,supabase:!!supabase,stripe:!!stripe,sms:!!twilioClient,email:!!process.env.SENDGRID_API_KEY}));
+app.post('/api/stripe/create-checkout',async(req,res)=>{try{if(!stripe)return res.status(503).json({error:'Stripe is not configured'});const {items=[],successUrl,cancelUrl}=req.body;const session=await stripe.checkout.sessions.create({mode:'payment',line_items:items.map(i=>({price_data:{currency:'gbp',product_data:{name:i.name},unit_amount:Math.round(i.price*100)},quantity:i.quantity})),success_url:successUrl||'http://localhost:5173/success',cancel_url:cancelUrl||'http://localhost:5173/menu'});res.json({url:session.url})}catch(e){res.status(400).json({error:e.message})}});
+app.post('/api/notify/sms',async(req,res)=>{try{if(!twilioClient)return res.status(503).json({error:'Twilio is not configured'});const m=await twilioClient.messages.create({body:req.body.message,to:req.body.to,from:process.env.TWILIO_FROM});res.json({sid:m.sid})}catch(e){res.status(400).json({error:e.message})}});
+app.post('/api/notify/email',async(req,res)=>{try{if(!process.env.SENDGRID_API_KEY)return res.status(503).json({error:'SendGrid is not configured'});await sgMail.send({to:req.body.to,from:process.env.SENDGRID_FROM,subject:req.body.subject||'Eatsy offer',text:req.body.text||''});res.json({sent:true})}catch(e){res.status(400).json({error:e.message})}});
+app.post('/api/loyalty/offer',(req,res)=>{const {orders=0,totalSpend=0,language='en'}=req.body;const offer=orders>=10?'20% VIP reward':totalSpend>=100?'15% loyal-customer reward':'10% next-order reward';res.json({offer,language,reason:'Personalized from purchase behaviour'})});
+app.listen(process.env.PORT||4242,()=>console.log(`Eatsy API running on http://localhost:${process.env.PORT||4242}`));

@@ -1,0 +1,2 @@
+export function getCustomerLocation(){return new Promise((resolve,reject)=>{if(!navigator.geolocation)return reject(new Error('Geolocation is not supported'));navigator.geolocation.getCurrentPosition(p=>resolve({lat:p.coords.latitude,lng:p.coords.longitude}),reject,{enableHighAccuracy:true,timeout:10000})})}
+export function googleMapsDirections(lat,lng){return `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(`${lat},${lng}`)}`}

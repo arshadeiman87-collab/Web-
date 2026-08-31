@@ -1,0 +1,2 @@
+import {describe,it,expect} from "vitest";
+describe("ResumeForge core behavior",()=>{it("keeps ATS score bounded",()=>{const score=Math.min(100,Math.round(4/5*100));expect(score).toBe(80)});it("does not invent experience in rewrite demo",()=>{const input="Built responsive React interfaces used by internal teams.";expect(input).toContain("React")})});

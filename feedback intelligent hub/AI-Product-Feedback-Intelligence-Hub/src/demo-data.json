@@ -1,0 +1,16 @@
+{
+  "feedback_count": 12842,
+  "themes": [
+    "Checkout",
+    "Mobile UX",
+    "Performance",
+    "Onboarding",
+    "Notifications",
+    "Integrations"
+  ],
+  "sources": [
+    "Review",
+    "Survey",
+    "Support ticket"
+  ]
+}

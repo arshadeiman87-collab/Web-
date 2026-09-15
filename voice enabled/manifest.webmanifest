@@ -1,0 +1,9 @@
+{
+  "name": "TableTalk Restaurant",
+  "short_name": "TableTalk",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#7c3aed",
+  "icons": []
+}

@@ -1,0 +1,3 @@
+import { products } from "./catalog";
+export function retrieveCatalog(query){const q=query.toLowerCase();return products.filter(p=>[p.name,p.category,p.description,...Object.values(p.specs)].join(" ").toLowerCase().includes(q)).slice(0,5);}
+export function protectPrompt(input){const blocked=["ignore previous instructions","reveal system prompt","developer message","api key","secret key"];return blocked.some(x=>input.toLowerCase().includes(x));}

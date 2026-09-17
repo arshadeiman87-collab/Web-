@@ -1,0 +1,7 @@
+export const products = [
+{id:"aerobook-14",name:"AeroBook 14",category:"Laptops",price:999,stock:24,badge:"Travel pick",icon:"▣",description:"Lightweight 14-inch laptop with all-day battery and a bright display.",specs:{Display:"14” 2.8K",Battery:"14 hours",Weight:"1.18 kg",Memory:"16 GB"}},
+{id:"novaphone-x",name:"NovaPhone X",category:"Phones",price:799,stock:17,badge:"New",icon:"▯",description:"Premium smartphone with an adaptive display and efficient performance.",specs:{Display:"6.5” OLED",Battery:"26 hours",Weight:"188 g",Memory:"256 GB"}},
+{id:"sonicbuds-pro",name:"SonicBuds Pro",category:"Audio",price:179,stock:42,badge:"Popular",icon:"◉",description:"Adaptive noise-cancelling earbuds designed for work and travel.",specs:{Battery:"32 hours",Weight:"5.4 g",Mode:"ANC",Codec:"LDAC"}},
+{id:"lumaclock-mini",name:"LumaClock Mini",category:"Smart Home",price:89,stock:9,badge:"Low stock",icon:"◌",description:"Compact smart display for timers, routines and home controls.",specs:{Display:"5”",WiFi:"Dual-band",Voice:"Built-in",Power:"USB-C"}},
+{id:"airmesh-router",name:"AirMesh Router",category:"Networking",price:229,stock:31,badge:"Fast setup",icon:"⌁",description:"Whole-home Wi-Fi system with simple setup and intelligent routing.",specs:{Coverage:"4,000 sq ft",WiFi:"Wi-Fi 6",Ports:"4× Gigabit",Units:"2-pack"}}
+];

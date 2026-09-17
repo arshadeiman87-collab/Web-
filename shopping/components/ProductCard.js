@@ -1,0 +1,2 @@
+import Link from "next/link";
+export default function ProductCard({product:p}){return <article className="product-card"><Link href={`/products/${p.id}`}><div className="product-art">{p.icon}<span className="tag">{p.badge}</span></div><div className="product-meta"><div><span className="category">{p.category}</span><h3>{p.name}</h3></div><strong>${p.price}</strong></div><p>{p.description}</p></Link></article>}

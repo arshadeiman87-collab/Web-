@@ -1,0 +1,2 @@
+import Link from "next/link";
+export default function Header(){return <header><Link className="brand" href="/"><span className="brand-mark">L</span><span>Luma<span>Cart</span></span></Link><nav><Link href="/">Home</Link><Link href="/products">Catalog</Link><Link href="/assistant">AI Assistant</Link><Link href="/account/orders">Orders</Link><Link href="/admin">Admin</Link></nav><div className="header-actions"><button aria-label="Search">⌕</button><button aria-label="Cart">Bag</button><Link className="avatar" href="/account/orders">EA</Link></div></header>}

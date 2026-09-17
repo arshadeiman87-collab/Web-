@@ -1,0 +1,6 @@
+create table if not exists products (id uuid primary key default gen_random_uuid(), name text not null, category text, description text, price numeric not null, stock integer default 0, metadata jsonb default '{}'::jsonb, embedding vector(1536));
+create table if not exists orders (id uuid primary key default gen_random_uuid(), user_id uuid, status text default 'processing', total numeric, created_at timestamptz default now());
+create table if not exists order_items (id uuid primary key default gen_random_uuid(), order_id uuid references orders(id), product_id uuid references products(id), quantity integer, unit_price numeric);
+create table if not exists policies (id uuid primary key default gen_random_uuid(), title text, body text, source_url text, embedding vector(1536));
+create table if not exists ai_events (id uuid primary key default gen_random_uuid(), user_id uuid, query text, grounded boolean, created_at timestamptz default now());
+-- Enable RLS in production and create policies scoped to authenticated users/admin roles.

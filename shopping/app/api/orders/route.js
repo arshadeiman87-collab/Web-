@@ -1,0 +1,1 @@
+import {NextResponse } from "next/server"; export async function GET(){return NextResponse.json({orders:[{id:"LC-20481",status:"Processing",items:3,total:1247}]})}

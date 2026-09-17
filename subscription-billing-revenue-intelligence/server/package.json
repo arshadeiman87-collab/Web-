@@ -1,0 +1,6 @@
+{
+  "name":"billing-api",
+  "type":"module",
+  "scripts":{"dev":"node --watch index.js","start":"node index.js","test":"node --test"},
+  "dependencies":{"cors":"^2.8.5","express":"^5.1.0"}
+}
